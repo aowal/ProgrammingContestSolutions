@@ -7,7 +7,7 @@ vector<long long> fb(long long n) {
     vector<long long> v;
     v.push_back(2);
     v.push_back(3);
-    for (int i = 2; v[i - 1] < n; i++) {
+    for (int i = 2; v[i - 1] <= n; i++) {
         v.push_back(v[i - 1] + v[i - 2] - 1);
 //        cout << v[i] << endl;
     }
@@ -29,7 +29,7 @@ vector<int> AlmostFibonacciKnapsack::getIndices(long x) {
     else if (x == 3)
         return {2};
     while (x > 1) {
-        if (x - t[t.size() - 1] >= 0) {
+        if ((x - t[t.size() - 1] >= 0) && (x - t[t.size() - 1]) != 1) {
             x = x - t[t.size() - 1];
             b.push_back(t.size());
             t.pop_back();
@@ -45,7 +45,7 @@ vector<int> AlmostFibonacciKnapsack::getIndices(long x) {
 
 int main() {
 
-    long long pp = 86267769395;
+    long long pp = 4;
     AlmostFibonacciKnapsack af;
     vector<int> kk = af.getIndices(pp);
 
